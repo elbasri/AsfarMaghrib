@@ -83,3 +83,11 @@ CREATE TABLE Travaille (
     FOREIGN KEY (IdBranche) REFERENCES Branche(IdBranche),
     FOREIGN KEY (IdService) REFERENCES Service(IdService)
 );
+
+CREATE TABLE AuditEmploye (
+    AuditId INT PRIMARY KEY IDENTITY(1,1),
+    IdEmploye NVARCHAR(10),
+    AncienEtat VARCHAR(20),
+    NouvelEtat VARCHAR(20),
+    DateHeureModification DATETIME
+);
