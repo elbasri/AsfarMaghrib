@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Employe Detail</h2>
+  <p><strong>ID:</strong> {{ employe.IdEmploye }}</p>
+  <p><strong>Nom:</strong> {{ employe.Nom }}</p>
+  <p><strong>Prenom:</strong> {{ employe.Prenom }}</p>
+  <p><strong>Nationalite:</strong> {{ employe.Nationalite }}</p>
+  <p><strong>Carte Identite:</strong> {{ employe.CarteIdentite }}</p>
+  <p><strong>Phone:</strong> {{ employe.Phone }}</p>
+  <p><strong>Etat:</strong> {{ employe.Etat }}</p>
+  <a href="{% url 'employe-update' employe.IdEmploye %}">Edit Employe</a>
+  <form method="post" action="{% url 'employe-delete' employe.IdEmploye %}">
+    {% csrf_token %}
+    <button type="submit">Delete Employe</button>
+  </form>
+  <a href="{% url 'employe-list' %}">Back to List</a>
+{% endblock %}

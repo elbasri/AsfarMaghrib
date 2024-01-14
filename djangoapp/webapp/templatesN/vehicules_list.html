@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Vehicules List</h2>
+  <ul>
+    {% for vehicules in vehicules_list %}
+      <li>
+        <a href="{% url 'vehicules-detail' vehicules.Plaque %}">{{ vehicules.Plaque }}</a>
+      </li>
+    {% empty %}
+      <li>No vehicules available.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'vehicules-create' %}">Add Vehicule</a>
+{% endblock %}

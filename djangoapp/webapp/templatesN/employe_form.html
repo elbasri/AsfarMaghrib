@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if employe %}Edit{% else %}Create{% endif %} Employe</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% if employe %}{% url 'employe-detail' employe.IdEmploye %}{% else %}{% url 'employe-list' %}{% endif %}">Cancel</a>
+{% endblock %}
