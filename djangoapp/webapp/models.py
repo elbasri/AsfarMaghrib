@@ -134,3 +134,28 @@ class AgentGuichetView(models.Model):
 
     class Meta:
         managed = False
+
+class AuditEmploye(models.Model):
+    AuditId = models.AutoField(primary_key=True)
+    IdEmploye = models.CharField(max_length=10)
+    AncienEtat = models.CharField(max_length=20)
+    NouvelEtat = models.CharField(max_length=20)
+    DateHeureModification = models.DateTimeField()
+
+    def __str__(self):
+        return f'Audit ID: {self.AuditId}, Employee ID: {self.IdEmploye}, ' \
+               f'Previous State: {self.AncienEtat}, New State: {self.NouvelEtat}, ' \
+               f'Date and Time: {self.DateHeureModification}'
+    
+class CustomQueryData(models.Model):
+    numero_ticket = models.IntegerField()
+    nom_client = models.CharField(max_length=255)
+    nom_ligne = models.CharField(max_length=255)
+    prix = models.DecimalField(max_digits=10, decimal_places=2)
+    nom_employe = models.CharField(max_length=255)
+    prenom_employe = models.CharField(max_length=255)
+    date_depart = models.DateField()
+    heure = models.TimeField()
+
+    class Meta:
+        managed = False
