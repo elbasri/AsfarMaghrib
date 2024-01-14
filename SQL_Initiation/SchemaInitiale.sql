@@ -71,13 +71,13 @@ CREATE TABLE Conduit (
     FOREIGN KEY (NomLigne) REFERENCES Ligne(Nom)
 );
 
--- Créer la table  Travaille
+-- Créer la table Travaille
 CREATE TABLE Travaille (
     IdEmploye NVARCHAR(10),
     IdBranche NVARCHAR(10),
     IdService NVARCHAR(10),
     Date DATETIME NOT NULL,
-    Annee NUMERIC(180) NOT NULL,
+    Annee INT NOT NULL, -- Change NUMERIC(180) to INT
     PRIMARY KEY (IdEmploye, IdBranche, IdService, Date),
     FOREIGN KEY (IdEmploye) REFERENCES Employe(IdEmploye),
     FOREIGN KEY (IdBranche) REFERENCES Branche(IdBranche),
