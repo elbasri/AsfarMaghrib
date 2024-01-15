@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+sq27t3iemc(lkpiu!7*kbj+mru!tb!luci0vuqb%m)@0k==v#
 DEBUG = True
 
 ALLOWED_HOSTS = ['asfarmaghrib.maktab.ma', 'https://asfarmaghrib.maktab.ma', 'example.com', 'localhost', '127.0.0.1']
-
+CSRF_TRUSTED_ORIGINS=['https://asfarmaghrib.maktab.ma']
 
 
 # Application definition
