@@ -50,9 +50,13 @@ Avant de commencer à travailler sur le projet ou à le déployer, assurez-vous 
 
 Pour installer et exécuter le projet localement, Clonez le dépôt du projet depuis GitHub :
    ```
-   $ git clone https://github.com/votre-nom-utilisateur/votre-projet.git
+   $ git clone https://github.com/elbasri/AsfarMaghrib.git
 ```
-
+   ``` $ cd AsfarMaghrib   ```
+   ``` $ pip install -r requirements.txt   ```
+   ``` $ python manage.py migrate   ```
+   ``` $ python manage.py runserver   ```
+   
 ### Demonstration
    ```
   https://asfarmaghrib.maktab.ma 
