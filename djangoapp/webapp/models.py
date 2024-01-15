@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import connection
 
 class Vehicules(models.Model):
     Plaque = models.CharField(max_length=7, primary_key=True)
@@ -147,7 +148,7 @@ class AuditEmploye(models.Model):
                f'Previous State: {self.AncienEtat}, New State: {self.NouvelEtat}, ' \
                f'Date and Time: {self.DateHeureModification}'
     
-class CustomQueryData(models.Model):
+class tbord(models.Model):
     numero_ticket = models.IntegerField()
     nom_client = models.CharField(max_length=255)
     nom_ligne = models.CharField(max_length=255)
@@ -159,3 +160,48 @@ class CustomQueryData(models.Model):
 
     class Meta:
         managed = False
+
+
+class tbordManager(models.Manager):
+    def custom_query(self):
+        with connection.cursor() as cursor:
+            cursor.execute("""
+            SELECT 
+                Vend.NumeroTicket,
+                Ticket.NomClient,
+                Ligne.Nom AS NomLigne,
+                Ligne.Prix,
+                Employe.Nom AS NomEmploye,
+                Employe.Prenom AS PrenomEmploye,
+                Vend.DateDepart,
+                Vend.Heure
+            FROM 
+                Vend
+            INNER JOIN 
+                Ticket ON Vend.NumeroTicket = Ticket.NumeroTicket
+            INNER JOIN 
+                Ligne ON Vend.NomLigne = Ligne.Nom
+            INNER JOIN 
+                Employe ON Vend.IdEmploye = Employe.IdEmploye
+            WHERE 
+                Vend.DateDepart BETWEEN '2022-01-01' AND '2022-12-31'
+            ORDER BY 
+                Vend.DateDepart, Vend.Heure;
+            """)
+            results = cursor.fetchall()
+        
+        custom_query_data_list = []
+        for row in results:
+            custom_query_data = tbord(
+                numero_ticket=row[0],
+                nom_client=row[1],
+                nom_ligne=row[2],
+                prix=row[3],
+                nom_employe=row[4],
+                prenom_employe=row[5],
+                date_depart=row[6],
+                heure=row[7],
+            )
+            custom_query_data_list.append(custom_query_data)
+
+        return custom_query_data_list

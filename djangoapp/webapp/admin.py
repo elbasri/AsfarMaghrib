@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Vehicules, Ligne, Employe, Ticket, Branche, Service, Vend, Conduit, Travaille
 from django.shortcuts import redirect
 from django.urls import path
-from .models import Employe, AuditEmploye
+from .models import Employe, AuditEmploye, tbord
 from django.db import transaction
 from django.utils import timezone
 
@@ -17,3 +17,5 @@ admin.site.register(Conduit)
 admin.site.register(Travaille)
 
 admin.site.register(AuditEmploye)
+
+admin.site.register(tbord)
