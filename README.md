@@ -1,4 +1,4 @@
-# Asfar Maghrib
+# ASFAR MAGHRIB
 
 ## Introduction
 
@@ -48,9 +48,12 @@ Avant de commencer à travailler sur le projet ou à le déployer, assurez-vous 
 
 ### Installation
 
-Pour installer et exécuter le projet localement, suivez ces étapes :
-
-1. Clonez le dépôt du projet depuis GitHub :
+Pour installer et exécuter le projet localement, Clonez le dépôt du projet depuis GitHub :
    ```
    $ git clone https://github.com/votre-nom-utilisateur/votre-projet.git
-      ```
+```
+
+### Demonstration
+   ```
+  https://asfarmaghrib.maktab.ma 
+```
